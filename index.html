@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Coursera</title>
+</head>
+<body>
+    <h1>Вечер в хату? <button id="colorSwitcher">Вечер в хату</button> </h1>
+    <div class="flag">
+    <div class="rectangle1"></div> 
+    <div class="rectangle2">
+        <h1>Место для рекламы</h1>
+    </div>
+    <div class="rectangle3"></div>
+    </div>
+
+    <script>
+        const btn = document.querySelector('#colorSwitcher');
+        const adSpaceCopy = document.querySelector('.rectangle2>h1');
+        const body = document.body;
+        let colorIndex = 0;
+        let adSpaceColorIndex = 0;
+        const colors = ['greenyellow', 'red', 'blue', 'cyan'];
+        btn.addEventListener('click', () => {
+            if (++colorIndex >= colors.length) colorIndex = 0;
+            const nextColor = colors[colorIndex];
+            body.setAttribute('style', `background-color: ${nextColor};`);
+        });
+        const adSpaceColorSwitcher = () => {
+            if (++adSpaceColorIndex >= colors.length) adSpaceColorIndex = 0;
+            const nextColor = colors[adSpaceColorIndex];
+            adSpaceCopy.setAttribute('style', `color: ${nextColor};`);
+            setTimeout(adSpaceColorSwitcher, 200);
+        };
+        adSpaceColorSwitcher();
+    </script>
+    
+    <style>
+        body{
+            background-color: greenyellow;
+        }
+        .rectangle1{
+            height:  160px;
+            width: 600px;
+            background-color: white;
+        }
+
+        .rectangle2{
+            height: 160px;
+            width: 600px;
+            background-color:blue; 
+            text-align: center;
+        }
+
+        h1{
+            margin-top: 0;
+            color: white;
+            text-transform: uppercase;
+            font-size: 44px;
+            font-family: sans-serif;
+            line-height: 3.5;
+        }
+
+        .rectangle3{
+            height: 160px;
+            width: 600px;
+            background-color: red;
+        }
+
+        .flag{
+            display: inline-block;
+            -webkit-animation:spin 4s linear infinite;
+            -moz-animation:spin 4s linear infinite;
+            animation:spin 4s linear infinite;
+        }
+      
+        @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+        @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+        @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+       
+    </style>
+
+</body>
+</html>
